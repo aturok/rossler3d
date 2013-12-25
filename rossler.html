@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script src="three.min.js"></script>
+<script src="jquery-1.10.2.min.js"></script>
+<script src="rossler.js"></script>
+<script src="Plotter3d.js"></script>
+<script>
+
+	plotter = null;
+
+	$(document).ready(function() {
+		plotter = new Plotter3d($('#plotter')[0]);
+	});
+
+	function addPlot() {
+        var r = rosslerGenerator(getp("#a"),getp("#b"),getp("#c"),getp("#dt"));
+        var ps = trajectory(r,getp("#l"),[getp("#x0"),getp("#y0"),getp("#z0")]);
+        plotter.addPlot(ps);
+
+	}
+
+
+    function getp(n) {
+        return parseFloat($(n).val());
+    }
+
+</script>
+</head>
+
+	<body>
+
+		<canvas id="plotter" width="600" height="400"></canvas>
+
+		<div>
+			<input type="button" value="<-" onclick="plotter.rotateCW();" />
+			<input type="button" value="->" onclick="plotter.rotateCCW();" />
+			<br />
+			<input type="button" value="-" onclick="plotter.scaleOut();" />
+			<input type="button" value="+" onclick="plotter.scaleIn();" />
+			<br />
+			<input type="text" id="a" value="0.2" />
+			<input type="text" id="b" value="0.2" />
+			<input type="text" id="c" value="5.7" />
+			<br />
+			<input type="text" id="x0" value="-10.0" />
+			<input type="text" id="y0" value="0.0" />
+			<input type="text" id="z0" value="0.0" />
+			<br />
+			<input type="text" id="l" value="1000"/>
+			<input type="text" id="dt" value="0.05"/>
+			<button onclick='addPlot();' >Go!</button>
+			<button onclick='plotter.toggleAnimationRotation();' >Anim!</button>
+			<button onclick='plotter.clean();' >Clear</button>
+			<br />
+		</div>
+
+	</body>
+
+</html>
