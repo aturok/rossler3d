@@ -2,6 +2,14 @@ function Plotter3d(canvasElement) {
 	var w = canvasElement.width * 0.1;
 	var h = canvasElement.height * 0.1;
 	this._camera = new THREE.OrthographicCamera( -w/2, w/2, h/2, -h/2, -100.01, 5000);
+	this._camera.rotation.x = 3.14 / 3;
+
+	var scaleFactor = 1.3;
+	this._camera.scale.x = scaleFactor;
+	this._camera.scale.y = scaleFactor;
+	this._camera.scale.z = scaleFactor;
+	this._camera.position.z = 20.0;
+
 	this._scene = new THREE.Scene();
 
     this._renderer = new THREE.CanvasRenderer({ canvas : canvasElement });
