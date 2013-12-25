@@ -20,7 +20,6 @@
         var r = rosslerGenerator(getp("#a"),getp("#b"),getp("#c"),getp("#dt"));
         var ps = trajectory(r,getp("#l"),[getp("#x0"),getp("#y0"),getp("#z0")]);
         plotter.addPlot(ps);
-
 	}
 
 
@@ -36,12 +35,6 @@
 		<canvas id="plotter" width="600" height="400"></canvas>
 
 		<div>
-			<input type="button" value="<-" onclick="plotter.rotateCW();" />
-			<input type="button" value="->" onclick="plotter.rotateCCW();" />
-			<br />
-			<input type="button" value="-" onclick="plotter.scaleOut();" />
-			<input type="button" value="+" onclick="plotter.scaleIn();" />
-			<br />
 			<input type="text" id="a" value="0.2" />
 			<input type="text" id="b" value="0.2" />
 			<input type="text" id="c" value="5.7" />
@@ -53,8 +46,6 @@
 			<input type="text" id="l" value="1000"/>
 			<input type="text" id="dt" value="0.05"/>
 			<button onclick='addPlot();' >Go!</button>
-			<button onclick='plotter.toggleAnimationRotation();' >Anim!</button>
-			<button onclick='plotter.clean();' >Clear</button>
 			<br />
 		</div>
 
