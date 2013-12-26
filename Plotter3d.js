@@ -30,7 +30,11 @@ Plotter3d.prototype.addPlot = function(points,color) {
 
 Plotter3d.prototype.animate = function() {
 	requestAnimationFrame(this.animate.bind(this));
-	this._camera.rotation.z += 0.01;
+
+	for(i = 0; i < this._plots.length; i++) {
+		this._plots[i].rotation.z += 0.01;
+	}
+
 	this._renderer.render(this._scene,this._camera);
 }
 
