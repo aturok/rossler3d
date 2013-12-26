@@ -16,6 +16,7 @@ function Plotter3d(canvasElement) {
     this._renderer.setSize(canvasElement.width, canvasElement.height);
 
     this._plots = [];
+    this.animate();
 };
 
 Plotter3d.prototype.addPlot = function(points,color) {
@@ -26,6 +27,12 @@ Plotter3d.prototype.addPlot = function(points,color) {
 
 	this._renderer.render(this._scene,this._camera);
 };
+
+Plotter3d.prototype.animate = function() {
+	requestAnimationFrame(this.animate.bind(this));
+	this._camera.rotation.z += 0.01;
+	this._renderer.render(this._scene,this._camera);
+}
 
 function ptsToGeometry(points) {
     var g = new THREE.Geometry();
