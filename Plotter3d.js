@@ -16,6 +16,7 @@ function Plotter3d(canvasElement) {
     this._renderer.setSize(canvasElement.width, canvasElement.height);
 
     this._plots = [];
+    this._plotRotationZ = 0.0;
     this.animate();
 };
 
@@ -32,7 +33,8 @@ Plotter3d.prototype.animate = function() {
 	requestAnimationFrame(this.animate.bind(this));
 
 	for(i = 0; i < this._plots.length; i++) {
-		this._plots[i].rotation.z += 0.01;
+		this._plotRotationZ += 0.01;
+		this._plots[i].rotation.z = this._plotRotationZ;
 	}
 
 	this._renderer.render(this._scene,this._camera);
